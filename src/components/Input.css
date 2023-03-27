@@ -1,0 +1,44 @@
+.Input {
+  display: block;
+}
+.Input .group-input {
+  position: relative;
+}
+.Input label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #979797;
+}
+.Input img {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  height: 1rem;
+  width: 1rem;
+}
+.Input input {
+  display: block;
+  border-radius: 10px;
+  outline-color: transparent;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  padding: 5px 15px;
+  height: 50px;
+}
+.Input input:focus {
+  outline-color: transparent;
+  outline: 0;
+}
+.Input input:focus-within {
+  outline-color: transparent;
+  outline: 0;
+}
+.Input input::placeholder {
+  color: var(--black);
+}

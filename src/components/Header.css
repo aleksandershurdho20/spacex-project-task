@@ -1,0 +1,28 @@
+.Header {
+  margin-bottom: 40px;
+}
+
+.SearchBar input {
+  width: 320px;
+}
+
+.SearchBar img {
+  height: unset ;
+  width: unset  ;
+}
+
+@media screen and (max-width: 500px) {
+  .Header {
+    width: 100%;
+    margin: 0px auto;
+    margin-bottom: 30px;
+  }
+
+  .SearchBar input {
+    width: 100%;
+    height: 40px;
+  }
+  .Input img{
+    top:10px;
+  }
+}

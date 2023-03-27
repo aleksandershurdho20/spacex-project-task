@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+import Body from "./components/Body";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import { useDebounce } from "./hooks/useDebounce";
+import { searchShipments } from "./utils/searchShipments";
+import shipments from "./utils/shipments.json";
 
 function App() {
-  const [count, setCount] = useState(0)
+   const shipmentsData = shipments;
+   const [activeShipment, setActiveShipment] = useState(shipmentsData[0]);
+   const [searchQuery, setSearchQuery] = useState("");
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+   const searchedResults = useDebounce(searchQuery, 500);
+   const handleShipmentClick = (shipment) => setActiveShipment(shipment);
+   const handleSearch = (e) => setSearchQuery(e.target.value);
+
+   const shipmentsResults = searchShipments(shipments, searchedResults);
+   return (
+      <div className="App">
+         <BrowserRouter>
+            <Nav
+               shipments={shipmentsResults}
+               handleShipmentClick={handleShipmentClick}
+               activeShipment={activeShipment}
+            />
+            <main className="body-wrapper">
+               <Header onChange={handleSearch} value={searchQuery} />
+               <Body activeShipment={activeShipment} />
+            </main>
+         </BrowserRouter>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+   );
 }
 
-export default App
+export default App;
