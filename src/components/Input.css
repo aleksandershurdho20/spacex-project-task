@@ -42,3 +42,10 @@
 .Input input::placeholder {
   color: var(--black);
 }
+
+@media screen and (max-width: 500px) {
+  .Input input{
+    height: 40px;
+  }
+}
+

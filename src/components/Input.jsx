@@ -8,9 +8,6 @@ const Input = ({
   image,
   alt,
   type,
-  name,
-  id,
-  placeholder,
   onChange,
 }) => {
   return (
@@ -22,8 +19,6 @@ const Input = ({
         <input
           readOnly={!onChange}
           type={type}
-          name={`${name}`}
-          id={`${id}`}
           value={value}
           onChange={onChange}
           style={
@@ -31,7 +26,6 @@ const Input = ({
               ? { padding: '5px 15px 5px 45px' }
               : { padding: '5px 15px' }
           }
-          placeholder={`${placeholder}`}
         />
       </div>
     </div>
